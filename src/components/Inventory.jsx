@@ -5,3 +5,4 @@ export default function Inventory() {
     <div>Inventory</div>
   )
 }
+// use Item.jsx and map each g
