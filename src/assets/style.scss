@@ -1,0 +1,126 @@
+
+#container{
+    position: absolute;
+    width: 900px;
+    
+    background-color: rgb(245, 245, 245);
+}
+
+// make a container on the right side of the screen for the item inventory which holds buttons in a grid
+#inventory{
+    position: absolute;
+    width: 760px;
+    height: 900px;
+    left: 1100px;
+    //inventory-grid: grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 10px;
+    border: 1px solid rgb(255, 0, 0);
+
+    .container {
+        width: 90%;
+        background-color: #efefef;
+        border: 1px solid rgb(0, 0, 0);
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgb(0, 102, 255);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 10px;
+        gap: 1rem;
+      }
+
+      .item {
+        width: 150px;
+        height: 150px;
+
+        font-size: 2rem;
+        background-image: linear-gradient(to bottom right, rgb(176, 60, 248), rgb(255, 239, 65));
+        color: rgb(255, 255, 255);
+        background-size: 160px;
+        //background-image: url(img/eyes/eyes5.png);
+        text-align: center;
+      }
+}
+
+#background{
+    width: 900px;
+    height: 900px;
+    top: 0;
+    left: 0;
+    display: flex;
+    background-image: url("/assets/img/body.png");
+    background-size: cover;
+    // outline
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#eyes, #mouth, #clothes, #hat, #wings{
+    position:absolute;
+    width:2040px;   /* width of actual image */
+    height:2040px; /* height of actual image */
+}
+
+
+
+// update this map when new items or categories are added
+$items: ("eyes": 8, "mouth": 21, "clothes": 8, "hat": 6, "wings": 2);
+
+@each $item, $total in $items {
+
+    @for $i from 1 through $total {
+        .#{$item}#{$i} {
+            background-image: url(/assets/img/#{$item}/#{$item}#{$i}.png);
+            background-repeat: no-repeat;
+            background-size: 900px;
+        }
+    }
+}
+
+// Position "next" buttons at the very top of the page
+
+$height: 440px;
+
+@each $item, $total in $items {
+
+    $height: $height + 30px;
+
+    #next#{$item}{
+        position: absolute;
+        top: $height - 425px;
+        left: 9px;
+        width: 140px;
+        height: 30px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        background-color: #000;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+}
+
+// Position "randomize" button opposite of the "next" buttons
+
+#randomize{
+    position: absolute;
+    top: $height - 390px;
+    left: 9px;
+    width: 140px;
+    height: 30px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}

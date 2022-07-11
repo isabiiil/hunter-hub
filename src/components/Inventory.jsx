@@ -6,3 +6,4 @@ export default function Inventory() {
   )
 }
 // use Item.jsx and map each g
+// 
